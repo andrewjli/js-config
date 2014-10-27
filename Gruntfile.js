@@ -3,7 +3,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         watch: {
             express: {
-                files: ['js/*.js'],
+                files: ['js/*.js', 'css/*.css', '!js/*.min.js', '!css/*.min.css'],
                 tasks: ['build', 'express:dev'],
                 options: {
                     spawn: false
@@ -15,10 +15,11 @@ module.exports = function(grunt) {
                 reporter: require('jshint-stylish')
             },
             lint: {
-                files: [{
-                    src: ['js/*.js', 'js/!*.min.js'],
-                }]
+                src: ['js/*.js', 'js/*.min.js', '!Gruntfile.js']
             }
+        },
+        jscs: {
+            src: ['js/*.js', 'js/*.min.js', '!Gruntfile.js']
         },
         uglify: {
             options: {
@@ -27,10 +28,10 @@ module.exports = function(grunt) {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'js',
+                    cwd: 'static/js',
                     src: ['*.js', '!*.min.js'],
-                    dest: 'js',
-                    ext: '.min.js',
+                    dest: 'static/js',
+                    ext: '.min.js'
                 }]
             }
         },
@@ -38,9 +39,9 @@ module.exports = function(grunt) {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'css',
+                    cwd: 'static/css',
                     src: ['*.css', '!*.min.css'],
-                    dest: 'css',
+                    dest: 'static/css',
                     ext: '.min.css'
                 }]
             }
@@ -65,11 +66,12 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-jscs');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-express-server');
 
     // Register new tasks
-    grunt.registerTask('build', ['jshint', 'uglify', 'cssmin']);
+    grunt.registerTask('build', ['jshint', 'jscs', 'uglify', 'cssmin']);
     grunt.registerTask('start', ['build', 'express:dev', 'watch']);
 };

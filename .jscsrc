@@ -33,12 +33,8 @@
     "disallowTrailingWhitespace": true,
     "disallowSpaceAfterPrefixUnaryOperators": true,
     "disallowMultipleVarDecl": true,
-    "disallowSpacesInFunctionExpression": {
-        "beforeOpeningRoundBrace": true
-    },
     "disallowEmptyBlocks": true,
     "disallowSpaceAfterObjectKeys": true,
-    "disallowSpacesInsideObjectBrackets": true,
     "disallowSpacesInsideArrayBrackets": true,
     "disallowSpacesInsideParentheses": true,
     "disallowQuotedKeysInObjects": "allButReserved",
