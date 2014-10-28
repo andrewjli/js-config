@@ -1,7 +1,7 @@
 {
     "excludeFiles": ["node_modules/**"],
     "maximumLineLength": {
-        "value": 80,
+        "value": 120,
         "tabSize": 4,
         "allowComments": true,
         "allowUrlComments": true,
@@ -22,6 +22,10 @@
     "requireSpaceBeforeBlockStatements": true,
     "requireLineFeedAtFileEnd": true,
     "requireSpacesInFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningRoundBrace": true,
         "beforeOpeningCurlyBrace": true
     },
     "requireCommaBeforeLineBreak": true,

@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         watch: {
@@ -15,11 +15,11 @@ module.exports = function(grunt) {
                 reporter: require('jshint-stylish')
             },
             lint: {
-                src: ['js/*.js', 'js/*.min.js', '!Gruntfile.js']
+                src: ['js/*.js', '!js/*.min.js',  'Gruntfile.js']
             }
         },
         jscs: {
-            src: ['js/*.js', 'js/*.min.js', '!Gruntfile.js']
+            src: ['js/*.js', '!js/*.min.js', '!./Gruntfile.js']
         },
         uglify: {
             options: {
@@ -28,9 +28,9 @@ module.exports = function(grunt) {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'static/js',
+                    cwd: 'js',
                     src: ['*.js', '!*.min.js'],
-                    dest: 'static/js',
+                    dest: 'js',
                     ext: '.min.js'
                 }]
             }
@@ -39,9 +39,9 @@ module.exports = function(grunt) {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'static/css',
+                    cwd: 'css',
                     src: ['*.css', '!*.min.css'],
-                    dest: 'static/css',
+                    dest: 'css',
                     ext: '.min.css'
                 }]
             }
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
                     script: 'app.js',
                     node_env: 'production'
                 }
-            },
+            }
         }
     });
 
