@@ -20,5 +20,5 @@
     "browser": true,
     "jquery": true,
     "mocha": true,
-    "node": true,
+    "node": true
 }
